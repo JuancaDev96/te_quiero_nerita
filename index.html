@@ -325,6 +325,190 @@
     .footer-flower{font-size:2.2rem;margin-bottom:10px}
     .tiny{font:12px system-ui,sans-serif;opacity:.8}
 
+
+    /* -----------------------------
+       Ramo interactivo de Estefanía
+       ----------------------------- */
+    .bouquet-intro{
+      width:min(920px,100%);
+      margin:0 auto 35px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:18px;
+    }
+    .bouquet-stage{
+      width:min(430px,92vw);
+      min-height:285px;
+      position:relative;
+      cursor:pointer;
+      user-select:none;
+      outline:none;
+      perspective:900px;
+    }
+    .bouquet-glow{
+      position:absolute;
+      width:280px;height:180px;
+      left:50%;top:45px;
+      transform:translateX(-50%);
+      background:radial-gradient(circle,rgba(255,222,75,.52),rgba(255,222,75,0) 70%);
+      filter:blur(5px);
+      transition:transform .8s ease,opacity .8s ease;
+    }
+    .bouquet-wrap{
+      position:absolute;
+      left:50%;bottom:3px;
+      width:210px;height:115px;
+      transform:translateX(-50%);
+      z-index:4;
+      transition:transform .65s cubic-bezier(.2,.8,.2,1);
+    }
+    .bouquet-paper{
+      position:absolute;
+      left:50%;bottom:0;
+      width:185px;height:108px;
+      transform:translateX(-50%) rotate(2deg);
+      background:linear-gradient(145deg,#fff8dc,#f4dfad);
+      clip-path:polygon(10% 0,90% 0,100% 100%,50% 82%,0 100%);
+      box-shadow:0 14px 25px rgba(92,65,0,.12);
+      border:1px solid rgba(142,105,12,.14);
+    }
+    .bouquet-ribbon{
+      position:absolute;left:50%;bottom:19px;
+      width:58px;height:25px;
+      transform:translateX(-50%) rotate(-3deg);
+      background:#e6b52b;
+      border-radius:7px 7px 14px 14px;
+      z-index:6;
+      box-shadow:0 5px 10px rgba(110,78,0,.15);
+    }
+    .bouquet-ribbon:before,.bouquet-ribbon:after{
+      content:"";position:absolute;top:13px;width:35px;height:27px;
+      background:#f1ca43;z-index:-1;
+    }
+    .bouquet-ribbon:before{right:39px;transform:rotate(25deg);clip-path:polygon(0 0,100% 45%,0 100%)}
+    .bouquet-ribbon:after{left:39px;transform:scaleX(-1) rotate(25deg);clip-path:polygon(0 0,100% 45%,0 100%)}
+
+    .bouquet-stem{
+      position:absolute;
+      width:6px;height:125px;
+      bottom:55px;left:50%;
+      transform-origin:bottom;
+      background:linear-gradient(#658e42,#4e7836);
+      border-radius:99px;
+      z-index:2;
+    }
+    .bouquet-stem.s1{transform:rotate(-23deg)}
+    .bouquet-stem.s2{transform:rotate(-11deg)}
+    .bouquet-stem.s3{transform:rotate(0)}
+    .bouquet-stem.s4{transform:rotate(12deg)}
+    .bouquet-stem.s5{transform:rotate(24deg)}
+
+    .bouquet-flower{
+      position:absolute;
+      width:78px;height:78px;
+      left:50%;bottom:148px;
+      transform-origin:center;
+      z-index:3;
+      transition:transform .7s cubic-bezier(.2,.8,.2,1);
+    }
+    .bouquet-flower.f1{transform:translateX(-76px) rotate(-12deg) scale(.82)}
+    .bouquet-flower.f2{transform:translateX(-51px) rotate(-5deg) scale(.92)}
+    .bouquet-flower.f3{transform:translateX(-39px) translateY(-13px) scale(1.05)}
+    .bouquet-flower.f4{transform:translateX(-12px) rotate(7deg) scale(.93)}
+    .bouquet-flower.f5{transform:translateX(25px) rotate(14deg) scale(.82)}
+
+    .mini-petals{
+      position:absolute;inset:0;
+      background:
+        radial-gradient(circle at 50% 3%,#ffe44e 0 19%,transparent 20%),
+        radial-gradient(circle at 82% 22%,#ffd62e 0 19%,transparent 20%),
+        radial-gradient(circle at 97% 53%,#ffe04a 0 19%,transparent 20%),
+        radial-gradient(circle at 78% 83%,#ffd62e 0 19%,transparent 20%),
+        radial-gradient(circle at 50% 97%,#ffdc35 0 19%,transparent 20%),
+        radial-gradient(circle at 20% 83%,#ffd62e 0 19%,transparent 20%),
+        radial-gradient(circle at 3% 53%,#ffe04a 0 19%,transparent 20%),
+        radial-gradient(circle at 20% 22%,#ffd62e 0 19%,transparent 20%);
+      filter:drop-shadow(0 5px 5px rgba(100,70,0,.1));
+    }
+    .mini-center{
+      position:absolute;left:24px;top:24px;
+      width:30px;height:30px;border-radius:50%;
+      background:radial-gradient(circle at 35% 35%,#a46a00,#654000);
+    }
+
+    .bouquet-stage .bouquet-flower{
+      animation:bouquetSway 4s ease-in-out infinite;
+      animation-delay:var(--delay);
+    }
+    @keyframes bouquetSway{
+      0%,100%{margin-left:0}
+      50%{margin-left:3px}
+    }
+    .bouquet-stage.blooming .bouquet-flower{
+      animation:bouquetBloom .9s cubic-bezier(.2,.9,.25,1) forwards;
+    }
+    @keyframes bouquetBloom{
+      0%{filter:brightness(.8);transform:translateX(-50%) scale(.25) rotate(-25deg)}
+      70%{filter:brightness(1.12);transform:translateX(-50%) scale(1.12) rotate(5deg)}
+      100%{filter:brightness(1);transform:translateX(-50%) scale(1) rotate(0)}
+    }
+    .bouquet-title{
+      font-size:clamp(1.55rem,4vw,2.35rem);
+      color:#654c08;
+      margin-top:-4px;
+    }
+    .bouquet-hint{
+      color:#907944;
+      font:600 12px system-ui,sans-serif;
+      letter-spacing:.07em;
+      text-transform:uppercase;
+    }
+    .love-card{
+      max-width:720px;
+      max-height:0;
+      opacity:0;
+      overflow:hidden;
+      transform:translateY(-10px) scale(.98);
+      transition:max-height .9s cubic-bezier(.2,.8,.2,1),opacity .6s ease,transform .7s ease;
+      background:rgba(255,255,255,.67);
+      border:1px solid rgba(181,143,28,.22);
+      border-radius:25px;
+      box-shadow:0 18px 50px rgba(104,77,0,.1);
+      backdrop-filter:blur(14px);
+    }
+    .love-card.open{
+      max-height:430px;
+      opacity:1;
+      transform:none;
+    }
+    .love-card-inner{padding:28px 30px 31px}
+    .love-card h2{
+      color:#5d4505;
+      font-size:clamp(1.7rem,4vw,2.5rem);
+      margin-bottom:13px;
+    }
+    .love-card p{
+      color:#6f603f;
+      font-size:1.05rem;
+      line-height:1.85;
+    }
+    .love-card .love-line{
+      margin-top:16px;
+      color:#a47700;
+      font-weight:700;
+      font-style:italic;
+    }
+    .love-card .heart{
+      color:#d99b00;
+      font-size:1.2em;
+    }
+
+    @media(max-width:520px){
+      .bouquet-stage{min-height:260px;transform:scale(.92)}
+      .love-card-inner{padding:24px 21px 27px}
+    }
+
     /* Modal de foto */
     .modal{
       position:fixed;inset:0;z-index:200;
@@ -431,6 +615,73 @@
   <header id="inicio">
     <div class="sun"></div>
     <div class="hero">
+
+      <div class="bouquet-intro reveal">
+        <div
+          class="bouquet-stage"
+          id="bouquetStage"
+          role="button"
+          tabindex="0"
+          aria-expanded="false"
+          aria-controls="loveCard"
+          aria-label="Abrir ramo de flores amarillas para Estefanía"
+        >
+          <div class="bouquet-glow"></div>
+
+          <div class="bouquet-stem s1"></div>
+          <div class="bouquet-stem s2"></div>
+          <div class="bouquet-stem s3"></div>
+          <div class="bouquet-stem s4"></div>
+          <div class="bouquet-stem s5"></div>
+
+          <div class="bouquet-flower f1" style="--delay:-.3s">
+            <div class="mini-petals"></div><div class="mini-center"></div>
+          </div>
+          <div class="bouquet-flower f2" style="--delay:-1.2s">
+            <div class="mini-petals"></div><div class="mini-center"></div>
+          </div>
+          <div class="bouquet-flower f3" style="--delay:-.7s">
+            <div class="mini-petals"></div><div class="mini-center"></div>
+          </div>
+          <div class="bouquet-flower f4" style="--delay:-1.8s">
+            <div class="mini-petals"></div><div class="mini-center"></div>
+          </div>
+          <div class="bouquet-flower f5" style="--delay:-2.3s">
+            <div class="mini-petals"></div><div class="mini-center"></div>
+          </div>
+
+          <div class="bouquet-wrap">
+            <div class="bouquet-paper"></div>
+            <div class="bouquet-ribbon"></div>
+          </div>
+        </div>
+
+        <div class="bouquet-title">Para Estefanía 🌼</div>
+        <div class="bouquet-hint">Toca el ramo para descubrir el mensaje</div>
+
+        <div class="love-card" id="loveCard" aria-live="polite">
+          <div class="love-card-inner">
+            <h2>Porque hay cosas de ti que me encantan ✨</h2>
+            <p>
+              Me encantan tus ojos, esa mirada que tiene algo que hace que
+              quiera quedarme un poquito más. Me encanta tu sonrisa hermosa,
+              de esas que pueden cambiar por completo el ambiente de un día.
+            </p>
+            <p>
+              También me encanta la suavidad de tu piel, pero todavía más
+              me enamora algo que va mucho más allá de lo que se ve:
+              <strong>tu inteligencia, tu forma de pensar, tu manera de ser
+              y todo lo especial que hay en ti.</strong>
+            </p>
+            <p class="love-line">
+              <span class="heart">♥</span>
+              Te quiero mucho, Estefanía. Este pequeño ramo es solo una forma
+              de recordarte lo importante y especial que eres para mí.
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div class="eyebrow">🌼 Un pequeño detalle para hoy</div>
       <h1>Que nunca te<br><span class="highlight">falte luz.</span></h1>
       <p class="subtitle">
@@ -575,6 +826,33 @@
     }, {threshold:.15});
 
     document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+
+    // -----------------------------
+    // Ramo de Estefanía
+    // -----------------------------
+    const bouquetStage = document.getElementById("bouquetStage");
+    const loveCard = document.getElementById("loveCard");
+
+    function openBouquet(){
+      const isOpen = loveCard.classList.toggle("open");
+      bouquetStage.classList.remove("blooming");
+      void bouquetStage.offsetWidth;
+      bouquetStage.classList.add("blooming");
+      bouquetStage.setAttribute("aria-expanded", String(isOpen));
+
+      if(isOpen){
+        burst(window.innerWidth / 2, Math.min(window.innerHeight * .42, 390), 30);
+      }
+    }
+
+    bouquetStage.addEventListener("click", openBouquet);
+    bouquetStage.addEventListener("keydown", (event) => {
+      if(event.key === "Enter" || event.key === " "){
+        event.preventDefault();
+        openBouquet();
+      }
+    });
 
     // -----------------------------
     // Foto: abrir/cerrar + efecto 3D
